@@ -1,20 +1,28 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/TodoList/TodoList";
+import AddTodos from "./components/AddTodos/AddTodos";
 
-function App() {
-  let todos = [
-    { text: "Get some milk", id: 1 },
-    { text: "Attend meeting", id: 2 },
-    { text: "Order some food", id: 3 }
-  ];
+export default class App extends React.Component {
+  state = {
+    todos: [
+      { text: "Get some milk" },
+      { text: "Attend meeting" },
+      { text: "Order some food" }
+    ]
+  };
 
-  return (
-    <div class="cutom-body">
-      <TodoList todos={todos} />
-    </div>
-  );
+  addTodo = newtodo => {
+    this.setState({ todos: [...this.state.todos, { text: newtodo }] });
+  };
+
+  render() {
+    return (
+      <div>
+        <AddTodos addTodo={this.addTodo} />
+        <TodoList todos={this.state.todos} />
+      </div>
+    );
+  }
 }
-
-export default App;
