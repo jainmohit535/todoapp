@@ -6,26 +6,36 @@ export default class Addtodos extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({ todoitem: "" });
-    return this.props.addTodo(this.state.todoitem);
+
+    let currentTodoItem = this.state.todoitem;
+
+    if (Number(currentTodoItem) || currentTodoItem.trim() === "") {
+      alert(
+        "Please enter valid string, only numbers and empty string is not allowed."
+      );
+    } else {
+      this.setState({ todoitem: "" });
+      return this.props.addTodo(this.state.todoitem);
+    }
   };
 
   handleChange = e => {
     this.setState({ todoitem: e.target.value });
   };
 
+  handleSelectChange = e => {
+    alert("selection change");
+  };
+
   render() {
     return (
       <form autoComplete="off" onSubmit={this.handleSubmit}>
-        <label htmlFor="todoitem" style={{ fontWeight: "bold" }}>
-          Add new Todo
-        </label>
-        <br />
         <input
           type="text"
           name="todoitem"
           id="todoitem"
           className="custom-input"
+          placeholder="Add new Todo"
           autoFocus
           value={this.state.todoitem}
           onChange={this.handleChange}

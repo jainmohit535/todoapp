@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import TodoList from "./components/TodoList/TodoList";
 import AddTodos from "./components/AddTodos/AddTodos";
 
@@ -25,8 +26,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <AddTodos addTodo={this.addTodo} />
         <TodoList todos={this.state.todos} handleDelete={this.handleDelete} />
+        <Footer />
       </div>
     );
   }
