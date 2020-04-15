@@ -6,22 +6,27 @@ import AddTodos from "./components/AddTodos/AddTodos";
 
 export default class App extends React.Component {
   state = {
-    todos: [
-      { text: "Get some milk" },
-      { text: "Attend meeting" },
-      { text: "Order some food" }
-    ]
+    todos: []
   };
 
   addTodo = newtodo => {
     this.setState({ todos: [...this.state.todos, { text: newtodo }] });
   };
 
+  handleDelete = value => {
+    const newTodos = this.state.todos.filter(
+      item => item.text.trim() !== value.trim()
+    );
+
+    console.log("this time", this.state.todos, newTodos);
+    this.setState({ todos: newTodos });
+  };
+
   render() {
     return (
       <div>
         <AddTodos addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} handleDelete={this.handleDelete} />
       </div>
     );
   }

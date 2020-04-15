@@ -1,6 +1,6 @@
 .custom-list {
   background-color: bisque;
-  list-style-position: inside;
+  min-height: 300px;
   width: 30%;
   height: 100%;
 }

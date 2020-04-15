@@ -3,18 +3,24 @@ import TodoComponent from "../TodoComponent";
 import "./TodoList.css";
 
 class TodoList extends Component {
-  state = {};
-  render() {
-    const listitems = this.props.todos.map((todo, index) => {
-      return <TodoComponent todo={todo} key={index} />;
+  getListItems = () =>
+    this.props.todos.map((todo, index) => {
+      return (
+        <TodoComponent
+          todo={todo}
+          currentIndex={index}
+          key={index}
+          handleClick={this.props.handleDelete}
+        />
+      );
     });
 
+  render() {
     return (
       <div>
         <h3>Available Todo items</h3>
-
         <div className="custom-list">
-          <ol>{listitems}</ol>
+          <ol>{this.getListItems()}</ol>
         </div>
       </div>
     );

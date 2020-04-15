@@ -26,6 +26,7 @@ export default class Addtodos extends Component {
           name="todoitem"
           id="todoitem"
           className="custom-input"
+          autoFocus
           value={this.state.todoitem}
           onChange={this.handleChange}
         />
