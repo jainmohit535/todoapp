@@ -4,3 +4,8 @@
   width: 30%;
   height: 100%;
 }
+
+.empty-list-text {
+  margin: 25%;
+  line-height: 5em;
+}

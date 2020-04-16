@@ -18,9 +18,13 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        <h3>Available Todo items</h3>
+        <h3>Available Todo items: {this.props.todos.length}</h3>
         <div className="custom-list">
-          <ol>{this.getListItems()}</ol>
+          {this.props.todos.length ? (
+            <ol>{this.getListItems()}</ol>
+          ) : (
+            <span className="empty-list-text">Wow! nothing in todo list</span>
+          )}
         </div>
       </div>
     );
