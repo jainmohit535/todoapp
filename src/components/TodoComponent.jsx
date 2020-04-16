@@ -2,11 +2,10 @@ import React from "react";
 
 const TodoComponent = props => {
   // Each Todo
-  console.log(props);
   return (
-    <li key={props.currentIndex}>
+    <li key={props.currentIndex} title={`Added on ${props.todo.time}`}>
       <div style={{ padding: "5px" }}>
-        <label>{props.todo.text}</label>
+        <label>{props.todo.text} </label>
         <input
           type="button"
           value="X"
