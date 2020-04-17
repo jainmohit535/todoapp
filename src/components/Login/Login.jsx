@@ -1,22 +1,29 @@
 import React from "react";
 import "./Login.css";
+import { withRouter } from "react-router-dom";
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     const fieldName = e.target.name;
     const value = e.target.value;
     this.setState({ [fieldName]: value });
   };
 
-  handleLogin = e => {
+  handleLogin = (e) => {
     e.preventDefault();
-    alert(`Hello ${this.state.username}`);
-    this.setState({ username: "", password: "" });
+
+    console.log(this.props);
+
+    if (!(this.state.username === "admin" && this.state.password === "admin")) {
+      return alert(`Invalid credentials`);
+    } else {
+      this.props.history.push("/todoapp");
+    }
   };
 
   render() {
@@ -27,6 +34,7 @@ export default class Login extends React.Component {
           <input
             type="text"
             name="username"
+            autoFocus
             value={this.state.username}
             onChange={this.handleChange}
           />
@@ -45,3 +53,5 @@ export default class Login extends React.Component {
     );
   }
 }
+
+export default withRouter(Login);

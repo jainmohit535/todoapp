@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./AddTodos.css";
+import { withRouter } from "react-router-dom";
 
-export default class Addtodos extends Component {
+class Addtodos extends Component {
   state = { todoitem: "" };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     let currentTodoItem = this.state.todoitem;
@@ -19,11 +20,11 @@ export default class Addtodos extends Component {
     }
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ todoitem: e.target.value });
   };
 
-  handleSelectChange = e => {
+  handleSelectChange = (e) => {
     alert("selection change");
   };
 
@@ -45,3 +46,5 @@ export default class Addtodos extends Component {
     );
   }
 }
+
+export default withRouter(Addtodos);
